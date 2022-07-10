@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Simulation Report - Provider</title>
+<meta name="description" content="CloudReports is a free simulation tool for cloud computing environments." />
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+<script src="../js/jquery-1.6.2.js" type="text/javascript"></script>
+<script src="../js/jquery.flot.js" type="text/javascript"></script>
+<script src="../js/jquery.flot.navigate.js" type="text/javascript"></script>
+<script src="../js/cloudreports.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	var previousOption;
+	var newOption;
+</script>
+
+</head>
+<body>
+
+<div id="slider">
+	
+    <div id="templatemo_sidebar">
+    	<div id="templatemo_header">
+		<img src="../images/cloudreports_logo.png" alt="CloudReports" />
+        </div> <!-- end of header -->
+        
+        <ul class="navigation">
+            <li><a href="../index.html">Overview<span class="ui_icon overview"></span></a></li>
+            <li><a href="#" class="selected">Provider<span class="ui_icon provider"></span></a></li>
+            <li><a href="../customers/customers.html">Customers<span class="ui_icon customers"></span></a></li>
+            <li><a href="../log/log.html">Log<span class="ui_icon log"></span></a></li>
+        </ul>
+    </div> <!-- end of sidebar -->
+
+	<div id="container">
+	
+		<div id="top_menu">	
+		    	<ul>
+				<li class="datacenter"><a href="#" class="selected">Select a datacenter:</a>
+								    
+                                        <select id="select_datacenter" onFocus="previousOption=$(this).attr('value');" onchange="newOption=$(this).attr('value');changeOption(newOption, previousOption); previousOption=newOption;">
+						<option value="datacenter_Datacenter1">Datacenter1</option>
+
+					</select>
+
+				</li>
+        		</ul>
+		</div>
+        
+
+	
+<div id="datacenter_Datacenter1">
+
+<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('resource_utilization_Datacenter1','slow');">Resource utilization <img src="../images/up.png" alt="arrow" class="resource_utilization_Datacenter1"/></a></h1>  
+
+		<div id="resource_utilization_Datacenter1">			
+			<p>Select the source:
+					<select id="select_resource_utilization_Datacenter1" onFocus="previousOption=$(this).attr('value');" onchange="newOption=$(this).attr('value');changeOption(newOption, previousOption); previousOption=newOption;">
+					  <option value="resource_utilization_Datacenter1_overall">Overall</option>
+					  <option value="resource_utilization_Datacenter1_Host0">Host0</option>
+
+					</select>	
+			</p>
+
+			<div id="resource_utilization_Datacenter1_overall">					
+			<center>
+				<div id="checkboxes_graph_resource_utilization_Datacenter1_overall"></div>
+
+				<table border="0" id="table_graph_resource_utilization_Datacenter1_overall">
+				<tr>
+				<td><center><p class="ylabel">Resources</p></center></td>
+				<td><div id="graph_resource_utilization_Datacenter1_overall" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td><center>Time (minutes)</center></td>
+				</tr>
+				</table> 				
+
+				<input type="checkbox" id="white_background_graph_resource_utilization_Datacenter1_overall" onClick="toggleBackground('table_graph_resource_utilization_Datacenter1_overall');"><label for="white_background_graph_resource_utilization_Datacenter1_overall">White background</label>
+				<p>This graph shows the overall resource utilization on this datacenter.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var datasets = {
+        "CPU": {
+            label: "CPU (MIPS)",
+            data: [[0.0,0.0],[0.5499666666666666,0.0],[0.5832999999999999,0.0],[0.5850000000000001,10.4166666666667],[1.085,10.4166666666667],[1.585,0.0],[1.6183333333333332,0.0],[3.9292166666666666,10.4166666666667],[4.429216666666666,10.4166666666667],[4.929216666666666,0.0],[4.962549999999999,0.0],[10.75635,10.4166666666667],[11.25635,10.4166666666667],[11.75635,0.0],[11.789683333333333,0.0],[24.022583333333333,10.4166666666667],[24.522583333333333,0.0],[24.55591666666667,0.0],[49.3384,10.4166666666667],[49.8384,0.0],[49.87173333333333,0.0]]
+        },        
+        "RAM": {
+            label: "RAM (MB)",
+            data: [[0.0,0.0],[0.5499666666666666,1.28],[0.5832999999999999,1.28],[0.5850000000000001,1.28],[1.085,1.28],[1.585,1.28],[1.6183333333333332,1.28],[3.9292166666666666,1.28],[4.429216666666666,1.28],[4.929216666666666,1.28],[4.962549999999999,1.28],[10.75635,1.28],[11.25635,1.28],[11.75635,1.28],[11.789683333333333,1.28],[24.022583333333333,1.28],[24.522583333333333,1.28],[24.55591666666667,1.28],[49.3384,1.28],[49.8384,1.28],[49.87173333333333,1.28]]
+        },
+        "Bandwidth": {
+            label: "Bandwidth (Mbps)",
+            data: [[0.0,0.0],[0.5499666666666666,0.001],[0.5832999999999999,0.001],[0.5850000000000001,0.001],[1.085,0.001],[1.585,0.001],[1.6183333333333332,0.001],[3.9292166666666666,0.001],[4.429216666666666,0.001],[4.929216666666666,0.001],[4.962549999999999,0.001],[10.75635,0.001],[11.25635,0.001],[11.75635,0.001],[11.789683333333333,0.001],[24.022583333333333,0.001],[24.522583333333333,0.001],[24.55591666666667,0.001],[49.3384,0.001],[49.8384,0.001],[49.87173333333333,0.001]]
+        }
+    };
+
+    var i = 0;
+    $.each(datasets, function(key, val) {
+        val.color = i;
+        ++i;
+    });
+    
+    var choiceContainer = $("#checkboxes_graph_resource_utilization_Datacenter1_overall");
+    $.each(datasets, function(key, val) {
+        choiceContainer.append('<input type="checkbox" name="' + key +
+                               '" checked="checked" id="id' + key + '">' +
+                               '<label for="id' + key + '">'
+                                + val.label + '</label>');
+    });
+    choiceContainer.find("input").click(plotAccordingToChoices);
+
+    function plotAccordingToChoices() {
+        var data = [];
+	var placeholder = $("#graph_resource_utilization_Datacenter1_overall");
+	var options = {
+	 series: {
+	     lines: { show: true }
+	 },
+         zoom: {
+             interactive: true
+         },
+         pan: {
+             interactive: true
+         }
+        };
+ 
+        choiceContainer.find("input:checked").each(function () {
+            var key = $(this).attr("name");
+            if (key && datasets[key])
+                data.push(datasets[key]);
+        });
+ 
+        if (data.length > 0)
+            $.plot(placeholder, data, options);
+    }
+ 
+    plotAccordingToChoices();
+
+});
+</script> 
+		</div>	<!-- end of resource_utilization_Datacenter1_overall -->
+
+		
+<div id="resource_utilization_Datacenter1_Host0" style="display: none;">					
+			<center>
+				<div id="checkboxes_graph_resource_utilization_Datacenter1_Host0"></div>
+
+				<table border="0" id="table_graph_resource_utilization_Datacenter1_Host0">
+				<tr>
+				<td><center><p class="ylabel">Resources</p></center></td>
+				<td><div id="graph_resource_utilization_Datacenter1_Host0" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td><center>Time (minutes)</center></td>
+				</tr>
+				</table> 
+
+				<input type="checkbox" id="white_background_graph_resource_utilization_Datacenter1_Host0" onClick="toggleBackground('table_graph_resource_utilization_Datacenter1_Host0');"><label for="white_background_graph_resource_utilization_Datacenter1_Host0">White background</label>
+				<p>This graph shows the resource utilization on Host0.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var datasets = {
+        "CPU": {
+            label: "CPU (MIPS)",
+            data: [[0.0,0.0],[0.5499666666666666,0.0],[0.5832999999999999,0.0],[0.5850000000000001,10.4166666666667],[1.085,10.4166666666667],[1.585,0.0],[1.6183333333333332,0.0],[3.9292166666666666,10.4166666666667],[4.429216666666666,10.4166666666667],[4.929216666666666,0.0],[4.962549999999999,0.0],[10.75635,10.4166666666667],[11.25635,10.4166666666667],[11.75635,0.0],[11.789683333333333,0.0],[24.022583333333333,10.4166666666667],[24.522583333333333,0.0],[24.55591666666667,0.0],[49.3384,10.4166666666667],[49.8384,0.0],[49.87173333333333,0.0]]
+        },        
+        "RAM": {
+            label: "RAM (MB)",
+            data: [[0.0,0.0],[0.5499666666666666,1.28],[0.5832999999999999,1.28],[0.5850000000000001,1.28],[1.085,1.28],[1.585,1.28],[1.6183333333333332,1.28],[3.9292166666666666,1.28],[4.429216666666666,1.28],[4.929216666666666,1.28],[4.962549999999999,1.28],[10.75635,1.28],[11.25635,1.28],[11.75635,1.28],[11.789683333333333,1.28],[24.022583333333333,1.28],[24.522583333333333,1.28],[24.55591666666667,1.28],[49.3384,1.28],[49.8384,1.28],[49.87173333333333,1.28]]
+        },
+        "Bandwidth": {
+            label: "Bandwidth (Mbps)",
+            data: [[0.0,0.0],[0.5499666666666666,0.001],[0.5832999999999999,0.001],[0.5850000000000001,0.001],[1.085,0.001],[1.585,0.001],[1.6183333333333332,0.001],[3.9292166666666666,0.001],[4.429216666666666,0.001],[4.929216666666666,0.001],[4.962549999999999,0.001],[10.75635,0.001],[11.25635,0.001],[11.75635,0.001],[11.789683333333333,0.001],[24.022583333333333,0.001],[24.522583333333333,0.001],[24.55591666666667,0.001],[49.3384,0.001],[49.8384,0.001],[49.87173333333333,0.001]]
+        }
+    };
+
+    var i = 0;
+    $.each(datasets, function(key, val) {
+        val.color = i;
+        ++i;
+    });
+    
+    var choiceContainer = $("#checkboxes_graph_resource_utilization_Datacenter1_Host0");
+    $.each(datasets, function(key, val) {
+        choiceContainer.append('<input type="checkbox" name="' + key +
+                               '" checked="checked" id="id' + key + '">' +
+                               '<label for="id' + key + '">'
+                                + val.label + '</label>');
+    });
+    choiceContainer.find("input").click(plotAccordingToChoices);
+
+    function plotAccordingToChoices() {
+        var data = [];
+	var placeholder = $("#graph_resource_utilization_Datacenter1_Host0");
+	var options = {
+	 series: {
+	     lines: { show: true }
+	 },
+         zoom: {
+             interactive: true
+         },
+         pan: {
+             interactive: true
+         }
+        };
+ 
+        choiceContainer.find("input:checked").each(function () {
+            var key = $(this).attr("name");
+            if (key && datasets[key])
+                data.push(datasets[key]);
+        });
+ 
+        if (data.length > 0)
+            $.plot(placeholder, data, options);
+    }
+ 
+    plotAccordingToChoices();	
+
+});
+</script> 
+		</div>	<!-- end of resource_utilization_Datacenter1_Host0 -->
+
+
+		</div> <!-- end of resource_utilization_Datacenter1 -->
+	</div> <!-- end of content -->
+
+	
+
+	<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('power_consumption_Datacenter1','slow');">Power Consumption <img src="../images/up.png" alt="arrow" class="power_consumption_Datacenter1"/></a></h1>  
+
+		<div id="power_consumption_Datacenter1">			
+			<p>Select the source:
+					<select id="select_power_consumption_Datacenter1" onFocus="previousOption=$(this).attr('value');" onchange="newOption=$(this).attr('value');changeOption(newOption, previousOption); previousOption=newOption;">
+					  <option value="power_consumption_Datacenter1_overall">Overall</option>
+					  <option value="power_consumption_Datacenter1_Host0">Host0</option>
+
+					</select>	
+			</p>	
+			
+			<div id="power_consumption_Datacenter1_overall">					
+			<center>
+
+				<table border="0" id="table_graph_power_consumption_Datacenter1_overall">
+				<tr>
+				<td><center><p class="ylabel">Power (kW)</p></center></td>
+				<td><div id="graph_power_consumption_Datacenter1_overall" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td><center>Time (minutes)</center></td>
+				</tr>
+				</table> 	
+
+				<input type="checkbox" id="white_background_graph_power_consumption_Datacenter1_overall" onClick="toggleBackground('table_graph_power_consumption_Datacenter1_overall');"><label for="white_background_graph_power_consumption_Datacenter1_overall">White background</label>
+				<p>This graph shows the overall power consumption on this datacenter.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var pc_overall = [[0.0,0.0],[0.5499666666666666,0.0],[0.5832999999999999,0.0],[0.5850000000000001,73.125],[1.085,73.125],[1.585,0.0],[1.6183333333333332,0.0],[3.9292166666666666,73.125],[4.429216666666666,73.125],[4.929216666666666,0.0],[4.962549999999999,0.0],[10.75635,73.125],[11.25635,73.125],[11.75635,0.0],[11.789683333333333,0.0],[24.022583333333333,73.125],[24.522583333333333,0.0],[24.55591666666667,0.0],[49.3384,73.125],[49.8384,0.0],[49.87173333333333,0.0]];
+    var placeholder = $("#graph_power_consumption_Datacenter1_overall");
+    var options = {
+	 series: {
+	     lines: { show: true, fill: true }
+	 },
+         zoom: {
+             interactive: true
+         },
+         pan: {
+             interactive: true
+         }
+    };
+ 
+    $.plot(placeholder, [{data: pc_overall}], options);
+});
+</script> 
+			</div> <!-- end of power_consumption_Datacenter1_overall -->
+
+			
+<div id="power_consumption_Datacenter1_Host0" style="display: none;">					
+			<center>
+
+				<table border="0" id="table_graph_power_consumption_Datacenter1_Host0">
+				<tr>
+				<td><center><p class="ylabel">Power (kW)</p></center></td>
+				<td><div id="graph_power_consumption_Datacenter1_Host0" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td><center>Time (minutes)</center></td>
+				</tr>
+				</table> 
+
+				<input type="checkbox" id="white_background_graph_power_consumption_Datacenter1_Host0" onClick="toggleBackground('table_graph_power_consumption_Datacenter1_Host0');"><label for="white_background_graph_power_consumption_Datacenter1_Host0">White background</label>
+				<p>This graph shows the power consumption on Host0.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var pc_Host0 = [[0.0,0.0],[0.5499666666666666,0.0],[0.5832999999999999,0.0],[0.5850000000000001,73.125],[1.085,73.125],[1.585,0.0],[1.6183333333333332,0.0],[3.9292166666666666,73.125],[4.429216666666666,73.125],[4.929216666666666,0.0],[4.962549999999999,0.0],[10.75635,73.125],[11.25635,73.125],[11.75635,0.0],[11.789683333333333,0.0],[24.022583333333333,73.125],[24.522583333333333,0.0],[24.55591666666667,0.0],[49.3384,73.125],[49.8384,0.0],[49.87173333333333,0.0]];
+    var placeholder = $("#graph_power_consumption_Datacenter1_Host0");
+    var options = {
+	 series: {
+	     lines: { show: true, fill: true }
+	 },
+         zoom: {
+             interactive: true
+         },
+         pan: {
+             interactive: true
+         }
+    };
+ 
+    $.plot(placeholder, [{data: pc_Host0}], options);
+});
+</script> 
+
+</div> <!-- end of power_consumption_Datacenter1_Host0 -->
+
+
+		</div> <!-- end of power_consumption_Datacenter1 -->
+	</div> <!-- end of content -->
+        
+	<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('migrations_Datacenter1','slow');">Migrations <img src="../images/up.png" alt="arrow" class="migrations_Datacenter1"/></a></h1>  
+
+		<div id="migrations_Datacenter1">
+
+			<br/>Number of migrations: 0<br/><br/><br/>
+
+		</div> <!-- end of migrations_Datacenter1 -->
+	</div> <!-- end of content -->
+
+	<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('virtual_machines_Datacenter1','slow');">Virtual Machines <img src="../images/up.png" alt="arrow" class="virtual_machines_Datacenter1"/></a></h1>  
+
+		<div id="virtual_machines_Datacenter1">
+			<center>
+
+				<table border="0" id="table_graph_virtual_machines_Datacenter1">
+				<tr>
+				<td><center><p class="ylabel">Virtual Machines</p></center></td>
+				<td><div id="graph_virtual_machines_Datacenter1" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td></td>
+				</tr>
+				</table> 	
+
+				<input type="checkbox" id="white_background_graph_virtual_machines_Datacenter1" onClick="toggleBackground('table_graph_virtual_machines_Datacenter1');"><label for="white_background_graph_virtual_machines_Datacenter1">White background</label>
+				<p>This graph shows how many virtual machines have been sucessfully allocated on this datacenter by each customer.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var placeholder = $("#graph_virtual_machines_Datacenter1");
+    var options = {
+	 series: {
+            bars: { show: true }
+	 },
+        zoom: {
+            interactive: true
+        },
+        pan: {
+            interactive: true
+        },
+	xaxis: {
+    	    show: false
+	}
+    };
+
+    $.plot(placeholder, [{ data: [[1,1.0]], label: "Customer1"}], options);
+
+});
+</script> 
+		</div> <!-- end of virtual_machines_Datacenter1 -->
+	</div> <!-- end of content -->
+
+	<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('cloudlets_Datacenter1','slow');">Cloudlets <img src="../images/up.png" alt="arrow" class="cloudlets_Datacenter1"/></a></h1>  
+
+		<div id="cloudlets_Datacenter1">
+			<center>
+
+				<table border="0" id="table_graph_cloudlets_Datacenter1">
+				<tr>
+				<td><center><p class="ylabel">Cloudlets</p></center></td>
+				<td><div id="graph_cloudlets_Datacenter1" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td></td>
+				</tr>
+				</table> 
+
+				<input type="checkbox" id="white_background_graph_cloudlets_Datacenter1" onClick="toggleBackground('table_graph_cloudlets_Datacenter1');"><label for="white_background_graph_cloudlets_Datacenter1">White background</label>
+				<p>This graph shows how many cloudlets have been sucessfully executed on this datacenter by each customer.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var placeholder = $("#graph_cloudlets_Datacenter1");
+    var options = {
+	 series: {
+            bars: { show: true }
+	 },
+        zoom: {
+            interactive: true
+        },
+        pan: {
+            interactive: true
+        },
+	xaxis: {
+    	    show: false
+	}
+    };
+
+    $.plot(placeholder, [{ data: [[1,7.0]], label: "Customer1"}], options);
+
+});
+</script> 
+		</div> <!-- end of cloudlets_Datacenter1 -->
+	</div> <!-- end of content -->
+
+
+	<div id="content">
+        
+		<h1><a style="cursor: pointer;" onclick="toggleDiv('costs_Datacenter1','slow');">Costs <img src="../images/up.png" alt="arrow" class="costs_Datacenter1"/></a></h1>  
+
+		<div id="costs_Datacenter1">
+			<center>
+
+				<table border="0" id="table_graph_costs_Datacenter1">
+				<tr>
+				<td><center><p class="ylabel">Costs (m.u.)</p></center></td>
+				<td><div id="graph_costs_Datacenter1" style="width:600px;height:300px"></div></td>
+				</tr>
+				<tr>
+				<td></td>
+				<td></td>
+				</tr>
+				</table> 
+
+				<input type="checkbox" id="white_background_graph_costs_Datacenter1" onClick="toggleBackground('table_graph_costs_Datacenter1');"><label for="white_background_graph_costs_Datacenter1">White background</label>
+				<p>This graph shows the monetary costs generated by each customer based on their resource utilization on this datacenter.</p>
+			</center>
+ 
+<script type="text/javascript"> 
+$(function () {
+    var placeholder = $("#graph_costs_Datacenter1");
+    var options = {
+	 series: {
+            bars: { show: true }
+	 },
+        zoom: {
+            interactive: true
+        },
+        pan: {
+            interactive: true
+        },
+	xaxis: {
+    	    show: false
+	}
+    };
+
+    $.plot(placeholder, [{ data: [[1,26.6]], label: "Customer1"}], options);
+
+});
+</script> 
+		</div> <!-- end of costs_Datacenter1 -->
+	</div> <!-- end of content -->
+
+</div> <!-- end of datacenter_Datacenter1 -->
+
+        
+	<div id="footer">
+
+           CloudReports is licensed under GNU GPL 3.0 | Template adapted from <a href="http://www.templatemo.com" target="_blank">Free CSS Templates</a> | IE is not supported
+        
+        </div><!-- end of footer -->
+
+    </div> <!-- end of container -->
+
+</div> <!-- end of slider -->
+
+</body>
+</html>

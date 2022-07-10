@@ -1,7 +1,5 @@
 #project execution artifacts
-target
-db
-reports
+
 tempLog
 
 #eclipse file
